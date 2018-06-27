@@ -3,10 +3,12 @@ import { AppComponent } from './app.component';
 import { ImageryModule } from '@ansyn/imagery';
 import { BrowserModule } from '@angular/platform-browser';
 import { BaseOlModule } from './providers/ol/base-ol.module';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

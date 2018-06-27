@@ -1,12 +1,18 @@
 import { ImageryMap, IMap } from '@ansyn/imagery';
-import { empty, Observable } from 'rxjs';
+import { empty, Observable, of } from 'rxjs';
 import { GeoJsonObject, Point } from 'geojson';
 import { CaseMapExtent, CaseMapPosition } from '@ansyn/core';
+import ScaleLine from 'ol/control/scaleline';
+import ol_Map from 'ol/map';
+import { EventEmitter } from '@angular/core';
+import View from 'ol/view';
+import proj from 'ol/proj';
 
 @ImageryMap({
   mapType: 'OlImap'
 })
 export class OlImap extends IMap {
+  positionChanged = new EventEmitter();
   getCenter(): Observable<Point> {
     return undefined;
   }
@@ -20,7 +26,18 @@ export class OlImap extends IMap {
   }
 
   initMap(element: HTMLElement, layers?: any, position?: CaseMapPosition): Observable<boolean> {
-    return empty();
+    const projection = 'EPSG:3857';
+    const a = new ol_Map({
+      target: element,
+      layers: [...layers],
+      view: new View({
+        projection,
+        center: proj.transform(position.projectedState.center, position.projectedState.projection.code, projection),
+        zoom: position.projectedState.zoom
+      })
+    });
+    window['map'] = a;
+    return of(Boolean(a));
   }
 
   resetView(layer: any, position: CaseMapPosition, extent?: CaseMapExtent): Observable<boolean> {
