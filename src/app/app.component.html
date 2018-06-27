@@ -2,7 +2,17 @@
   <app-navbar></app-navbar>
 
   <div class="imagery">
-    <ansyn-imagery-view [mapComponentSettings]="imagerySettings"></ansyn-imagery-view>
+    <div>
+      <div>Openlayers</div>
+      <ansyn-imagery-view [mapComponentSettings]="imagerySettings"></ansyn-imagery-view>
+    </div>
+
+    <div>
+      <div>Cesium</div>
+      <ansyn-imagery-view [mapComponentSettings]="imagery2Settings"></ansyn-imagery-view>
+    </div>
+
+
   </div>
 
 </div>

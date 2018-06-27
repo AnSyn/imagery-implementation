@@ -25,4 +25,21 @@ export class AppComponent {
     }
   };
 
+  imagery2Settings: CaseMapState = {
+    id: 'id2',
+    sourceType: 'defaultCesium',
+    mapType: 'cesiumMap',
+    flags: {},
+    data: {
+      position: {
+        projectedState: {
+          center: [0, 0],
+          zoom: 3,
+          projection: {
+            code: 'EPSG:4326'
+          }
+        }
+      }
+    }
+  };
 }

@@ -5,7 +5,13 @@ div.app {
   width: 100vw;
   height: 100vh;
 }
-.imagery{
+.imagery {
+  display: flex;
   flex: 1;
   padding: 80px;
+}
+.imagery * {
+  margin: 0 10px;
+  flex: 1;
+  text-align: center;
 }

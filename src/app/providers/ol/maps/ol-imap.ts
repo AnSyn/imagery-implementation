@@ -27,7 +27,7 @@ export class OlImap extends IMap {
 
   initMap(element: HTMLElement, layers?: any, position?: CaseMapPosition): Observable<boolean> {
     const projection = 'EPSG:3857';
-    const a = new ol_Map({
+    this.mapObject = new ol_Map({
       target: element,
       layers: [...layers],
       view: new View({
@@ -36,8 +36,7 @@ export class OlImap extends IMap {
         zoom: position.projectedState.zoom
       })
     });
-    window['map'] = a;
-    return of(Boolean(a));
+    return of(Boolean(this.mapObject));
   }
 
   resetView(layer: any, position: CaseMapPosition, extent?: CaseMapExtent): Observable<boolean> {
