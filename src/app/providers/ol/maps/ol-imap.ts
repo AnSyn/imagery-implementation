@@ -1,18 +1,21 @@
 import { ImageryMap, IMap } from '@ansyn/imagery';
-import { empty, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { GeoJsonObject, Point } from 'geojson';
 import { CaseMapExtent, CaseMapPosition } from '@ansyn/core';
-import ScaleLine from 'ol/control/scaleline';
 import ol_Map from 'ol/map';
+import ol_Polygon from 'ol/geom/polygon';
+import ol_GeoJSON from 'ol/format/geojson';
+import ol_VectorLayer from 'ol/layer/vector';
+import ol_SourceVector from 'ol/source/vector';
 import { EventEmitter } from '@angular/core';
-import View from 'ol/view';
-import proj from 'ol/proj';
 
 @ImageryMap({
   mapType: 'OlImap'
 })
 export class OlImap extends IMap {
   positionChanged = new EventEmitter();
+  olGeoJSON = new ol_GeoJSON();
+
   getCenter(): Observable<Point> {
     return undefined;
   }
@@ -29,13 +32,14 @@ export class OlImap extends IMap {
     const projection = 'EPSG:3857';
     this.mapObject = new ol_Map({
       target: element,
-      layers: [...layers],
-      view: new View({
-        projection,
-        center: proj.transform(position.projectedState.center, position.projectedState.projection.code, projection),
-        zoom: position.projectedState.zoom
-      })
+      layers: [...layers]
     });
+    const feature = this.olGeoJSON.readFeature(position.extentPolygon, { featureProjection: projection, dataProjection: 'EPSG:4326' });
+    console.log(feature);
+
+    this.mapObject.getView().fit(feature.getGeometry());
+    // const vector: ol_VectorLayer = new ol_VectorLayer({ source: new ol_SourceVector({features: [feature] })});
+    // this.mapObject.addLayer(vector);
     return of(Boolean(this.mapObject));
   }
 

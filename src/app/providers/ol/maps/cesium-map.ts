@@ -4,17 +4,22 @@ import { Observable, of } from 'rxjs';
 import { CaseMapPosition } from '@ansyn/core';
 
 export const CesiumMapName = 'cesiumMap';
+Cesium.buildModuleUrl.setBaseUrl('assets/Cesium/');
 
 @ImageryMap({
   mapType: CesiumMapName
 })
 export class CesiumMap extends IMap<any> {
   static groupLayers = new Map<string, any>();
-  mapObject: any;
 
   initMap(element: HTMLElement, layers: any, position?: CaseMapPosition): Observable<boolean> {
-    Cesium.buildModuleUrl.setBaseUrl('assets/Cesium/');
-    this.mapObject = new Cesium.Viewer(element);
+    this.mapObject = new Cesium.Viewer(element, {
+      imageryProvider: layers[0]
+    });
+    const rec = [...position.extentPolygon.coordinates[0][0], ...position.extentPolygon.coordinates[0][2]];
+    this.mapObject.camera.setView({
+      destination: Cesium.Rectangle.fromDegrees(...rec)
+    });
     return of(true);
   }
 
@@ -84,6 +89,7 @@ export class CesiumMap extends IMap<any> {
   addLayerIfNotExist() {
 
   }
+
   getRotation(): number {
     return NaN;
   }

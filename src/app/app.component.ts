@@ -14,12 +14,32 @@ export class AppComponent {
     flags: {},
     data: {
       position: {
-        projectedState: {
-          center: [0, 0],
-          zoom: 3,
-          projection: {
-            code: 'EPSG:4326'
-          }
+        extentPolygon: {
+          type: 'Polygon',
+          coordinates: [
+            [
+              [
+                -180,
+                -90
+              ],
+              [
+                -180,
+                90
+              ],
+              [
+                180,
+                90
+              ],
+              [
+                180,
+                -90
+              ],
+              [
+                -180,
+                -90
+              ]
+            ]
+          ]
         }
       }
     }
@@ -27,17 +47,37 @@ export class AppComponent {
 
   imagery2Settings: CaseMapState = {
     id: 'id2',
-    sourceType: 'defaultCesium',
+    sourceType: 'OSM',
     mapType: 'cesiumMap',
     flags: {},
     data: {
       position: {
-        projectedState: {
-          center: [0, 0],
-          zoom: 3,
-          projection: {
-            code: 'EPSG:4326'
-          }
+        extentPolygon: {
+          type: 'Polygon',
+          coordinates: [
+            [
+              [
+                -180,
+                -90
+              ],
+              [
+                -180,
+                90
+              ],
+              [
+                180,
+                90
+              ],
+              [
+                180,
+                -90
+              ],
+              [
+                -180,
+                -90
+              ]
+            ]
+          ]
         }
       }
     }

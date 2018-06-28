@@ -6,7 +6,6 @@ import { ImageryModule } from '@ansyn/imagery';
 import { OsmSourceProvider } from './providers/ol/map-source-providers/osm.source-provider';
 import { OlImap } from './providers/ol/maps/ol-imap';
 import { CesiumMap } from './providers/ol/maps/cesium-map';
-import { DefaultCesium } from './providers/ol/map-source-providers/default-cesium';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,8 @@ import { DefaultCesium } from './providers/ol/map-source-providers/default-cesiu
     ImageryModule.provide({
       maps: [OlImap, CesiumMap],
       plugins: [],
-      mapSourceProviders: [OsmSourceProvider, DefaultCesium]
-    }),
+      mapSourceProviders: [OsmSourceProvider]
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
