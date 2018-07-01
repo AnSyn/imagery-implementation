@@ -24,7 +24,7 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "@ansyn/core": "^0.2.8-1.1",
-    "@ansyn/imagery": "^0.2.8-1.1",
+    "@ansyn/imagery": "^0.2.8-1.2",
     "bootstrap": "^4.1.1",
     "cesium": "^1.46.1",
     "core-js": "^2.5.4",

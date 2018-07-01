@@ -1,7 +1,7 @@
-import { ImageryMap, IMap } from '@ansyn/imagery';
 import { GeoJsonObject, Point } from 'geojson';
 import { Observable, of } from 'rxjs';
 import { CaseMapPosition } from '@ansyn/core';
+import { ImageryMap, IMap } from '@ansyn/imagery';
 
 export const CesiumMapName = 'cesiumMap';
 Cesium.buildModuleUrl.setBaseUrl('assets/Cesium/');

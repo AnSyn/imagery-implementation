@@ -1,13 +1,10 @@
-import { ImageryMap, IMap } from '@ansyn/imagery';
 import { Observable, of } from 'rxjs';
 import { GeoJsonObject, Point } from 'geojson';
 import { CaseMapExtent, CaseMapPosition } from '@ansyn/core';
 import ol_Map from 'ol/map';
-import ol_Polygon from 'ol/geom/polygon';
 import ol_GeoJSON from 'ol/format/geojson';
-import ol_VectorLayer from 'ol/layer/vector';
-import ol_SourceVector from 'ol/source/vector';
 import { EventEmitter } from '@angular/core';
+import { ImageryMap, IMap } from '@ansyn/imagery';
 
 @ImageryMap({
   mapType: 'OlImap'
