@@ -12,17 +12,33 @@ import { CaseMapState } from '@ansyn/core';
 })
 export class OsmSourceProvider extends BaseMapSourceProvider {
 
+  // createAsync(metaData: CaseMapState): Promise<any> {
+  //   const layer = this.create(metaData);
+  //   return Promise.resolve(layer);
+  // }
+
   protected create(metaData: CaseMapState): any[] {
     switch (metaData.mapType) {
-      case (<any> OlImap).mapType: {
-        const olOsmLayer = new TileLayer({
+      case (<any>OlImap).mapType: {
+        const osmLayer = new TileLayer({
           source: new OSM(),
           extent: proj.transformExtent([-180, -90, 180, 90], 'EPSG:4326', 'EPSG:3857')
         });
-        return [olOsmLayer];
+
+        const source = new OSM(<any>{
+          attributions: [
+            'All maps © <a href="http://www.openseamap.org/">OpenSeaMap</a>',
+            OSM.ATTRIBUTION
+          ],
+          opaque: false,
+          url: 'https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png'
+        });
+
+        const openSeaMapLayer = new TileLayer({ source });
+        return [osmLayer, openSeaMapLayer];
       }
 
-      case (<any> CesiumMap).mapType: {
+      case (<any>CesiumMap).mapType: {
         const cesiumOsmLayer = Cesium.createOpenStreetMapImageryProvider({ url: 'https://a.tile.openstreetmap.org/' });
         return [cesiumOsmLayer];
       }
