@@ -3,12 +3,12 @@
 
   <div class="imagery">
     <div>
-      <div>Openlayers</div>
+      <app-controller [settings]="imagerySettings"></app-controller>
       <ansyn-imagery-view [mapComponentSettings]="imagerySettings"></ansyn-imagery-view>
     </div>
 
     <div>
-      <div>Cesium</div>
+      <app-controller [settings]="imagery2Settings"></app-controller>
       <ansyn-imagery-view [mapComponentSettings]="imagery2Settings"></ansyn-imagery-view>
     </div>
 

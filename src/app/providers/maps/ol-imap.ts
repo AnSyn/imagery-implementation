@@ -4,12 +4,15 @@ import { CaseMapExtent, CaseMapPosition } from '@ansyn/core';
 import ol_Map from 'ol/map';
 import ol_GeoJSON from 'ol/format/geojson';
 import { EventEmitter } from '@angular/core';
-import { ImageryMap, IMap } from '@ansyn/imagery';
+import { BaseImageryMap, ImageryMap } from '@ansyn/imagery';
+import View from 'ol/view';
+
+export const OlMapName = 'OlImap';
 
 @ImageryMap({
-  mapType: 'OlImap'
+  mapType: OlMapName
 })
-export class OlImap extends IMap {
+export class OlImap extends BaseImageryMap<any> {
   positionChanged = new EventEmitter();
   olGeoJSON = new ol_GeoJSON();
 
@@ -31,24 +34,27 @@ export class OlImap extends IMap {
       target: element,
       layers: [...layers]
     });
-    const feature = this.olGeoJSON.readFeature(position.extentPolygon, { featureProjection: projection, dataProjection: 'EPSG:4326' });
-    console.log(feature);
-
-    this.mapObject.getView().fit(feature.getGeometry());
-    // const vector: ol_VectorLayer = new ol_VectorLayer({ source: new ol_SourceVector({features: [feature] })});
-    // this.mapObject.addLayer(vector);
+    if (position) {
+      const feature = this.olGeoJSON.readFeature(position.extentPolygon, { featureProjection: projection, dataProjection: 'EPSG:4326' });
+      this.mapObject.getView().fit(feature.getGeometry());
+    }
     return of(Boolean(this.mapObject));
   }
 
   resetView(layer: any, position: CaseMapPosition, extent?: CaseMapExtent): Observable<boolean> {
-    return undefined;
+    const view = new View({
+      projection: layer.getSource().getProjection()
+    });
+    this.mapObject.addLayer(layer);
+    this.mapObject.setView(view);
+    return of(true);
   }
 
   addLayer(layer: any): void {
   }
 
   getLayers(): any[] {
-    return undefined;
+    return [];
   }
 
   removeLayer(layer: any): void {

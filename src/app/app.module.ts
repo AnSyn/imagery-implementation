@@ -6,13 +6,17 @@ import { ImageryModule } from '@ansyn/imagery';
 import { OsmSourceProvider } from './providers/map-source-providers/osm.source-provider';
 import { OlImap } from './providers/maps/ol-imap';
 import { CesiumMap } from './providers/maps/cesium-map';
+import { ControllerComponent } from './controller/controller.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    ControllerComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     ImageryModule.provide({
       maps: [OlImap, CesiumMap],

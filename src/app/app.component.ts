@@ -8,7 +8,7 @@ import { CaseMapState } from '@ansyn/core';
 })
 export class AppComponent {
   imagerySettings: CaseMapState = {
-    id: 'id',
+    id: 'map1',
     sourceType: 'OSM',
     mapType: 'OlImap',
     flags: {},
@@ -46,7 +46,7 @@ export class AppComponent {
   };
 
   imagery2Settings: CaseMapState = {
-    id: 'id2',
+    id: 'map2',
     sourceType: 'OSM',
     mapType: 'cesiumMap',
     flags: {},

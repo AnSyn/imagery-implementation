@@ -1,7 +1,7 @@
 import { GeoJsonObject, Point } from 'geojson';
 import { Observable, of } from 'rxjs';
 import { CaseMapPosition } from '@ansyn/core';
-import { ImageryMap, IMap } from '@ansyn/imagery';
+import { BaseImageryMap, ImageryMap } from '@ansyn/imagery';
 
 export const CesiumMapName = 'cesiumMap';
 Cesium.buildModuleUrl.setBaseUrl('assets/Cesium/');
@@ -9,17 +9,20 @@ Cesium.buildModuleUrl.setBaseUrl('assets/Cesium/');
 @ImageryMap({
   mapType: CesiumMapName
 })
-export class CesiumMap extends IMap<any> {
+export class CesiumMap extends BaseImageryMap<any> {
   static groupLayers = new Map<string, any>();
 
   initMap(element: HTMLElement, layers: any, position?: CaseMapPosition): Observable<boolean> {
     this.mapObject = new Cesium.Viewer(element, {
       imageryProvider: layers[0]
     });
-    const rec = [...position.extentPolygon.coordinates[0][0], ...position.extentPolygon.coordinates[0][2]];
-    this.mapObject.camera.setView({
-      destination: Cesium.Rectangle.fromDegrees(...rec)
-    });
+
+    if (position) {
+      const rec = [...position.extentPolygon.coordinates[0][0], ...position.extentPolygon.coordinates[0][2]];
+      this.mapObject.camera.setView({
+        destination: Cesium.Rectangle.fromDegrees(...rec)
+      });
+    }
     return of(true);
   }
 
@@ -36,7 +39,11 @@ export class CesiumMap extends IMap<any> {
   }
 
   resetView(layer: any): Observable<boolean> {
-    return Observable.throw(new Error('Method not implemented.'));
+    const layers = this.mapObject.imageryLayers;
+    const baseLayer = layers.get(0);
+    layers.remove(baseLayer);
+    layers.addImageryProvider(layer);
+    return of(true);
   }
 
   addLayer(layer: any): void {
