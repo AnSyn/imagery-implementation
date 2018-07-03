@@ -4,7 +4,7 @@ import { CaseMapExtent, CaseMapPosition } from '@ansyn/core';
 import ol_Map from 'ol/map';
 import ol_GeoJSON from 'ol/format/geojson';
 import { EventEmitter } from '@angular/core';
-import { BaseImageryMap, ImageryMap} from '@ansyn/imagery';
+import { BaseImageryMap, ImageryMap } from '@ansyn/imagery';
 import View from 'ol/view';
 
 export const OlMapName = 'OlImap';
@@ -35,13 +35,9 @@ export class OlImap extends BaseImageryMap<any> {
       layers: [...layers]
     });
     if (position) {
-      const feature = this.olGeoJSON.readFeature(position.extentPolygon, {featureProjection: projection, dataProjection: 'EPSG:4326'});
-      console.log(feature);
-
+      const feature = this.olGeoJSON.readFeature(position.extentPolygon, { featureProjection: projection, dataProjection: 'EPSG:4326' });
       this.mapObject.getView().fit(feature.getGeometry());
     }
-    // const vector: ol_VectorLayer = new ol_VectorLayer({ source: new ol_SourceVector({features: [feature] })});
-    // this.mapObject.addLayer(vector);
     return of(Boolean(this.mapObject));
   }
 

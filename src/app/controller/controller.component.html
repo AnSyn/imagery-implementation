@@ -2,6 +2,6 @@
   {{settings.id}}:
   <select id="mapOptions" [(ngModel)]="selectedMapOption" (ngModelChange)="onMapSelected($event)">
     <option selected="selected" disabled>Map Engine...</option>
-    <option *ngFor="let option of mapOptions" [value]="option">{{option}}</option>
+    <option *ngFor="let option of mapOptions" [value]="option.value">{{option.title}}</option>
   </select>
 </div>

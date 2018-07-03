@@ -39,7 +39,10 @@ export class CesiumMap extends BaseImageryMap<any> {
   }
 
   resetView(layer: any): Observable<boolean> {
-    this.mapObject.imageryProvider = layer;
+    const layers = this.mapObject.imageryLayers;
+    const baseLayer = layers.get(0);
+    layers.remove(baseLayer);
+    layers.addImageryProvider(layer);
     return of(true);
   }
 
