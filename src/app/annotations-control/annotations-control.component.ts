@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import IMAGERY_SETTINGS from '../IMAGERY_SETTINGS';
 import { ImageryCommunicatorService } from '@ansyn/imagery';
 import { ANNOTATION_MODE_LIST, AnnotationsVisualizer } from '@ansyn/ol';
-import { filter, tap, take } from 'rxjs/operators';
+import { filter, take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-annotations-control',
@@ -40,4 +40,10 @@ export class AnnotationsControlComponent implements OnInit {
     this.annotations.clearEntities();
   }
 
+  changeFill(color) {
+    this.annotations.updateStyle({ initial: { fill: color } });
+  }
+  changeStroke(color) {
+    this.annotations.updateStyle({ initial: { stroke: color } });
+  }
 }

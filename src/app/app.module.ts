@@ -6,6 +6,8 @@ import { AnnotationsVisualizer, OL_CONFIG, OL_PLUGINS_CONFIG, OpenLayerBingSourc
 import { NavbarModule } from './navbar/navbar.module';
 import { AnnotationsControlComponent } from './annotations-control/annotations-control.component';
 import { MatButtonModule, MatIconModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MccColorPickerModule } from 'material-community-components';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,13 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     NavbarModule,
     MatButtonModule,
     MatIconModule,
+    MccColorPickerModule.forRoot({
+      used_colors: ['#000000', '#123456', '#777666']
+    }),
     ImageryModule.provide({
       maps: [OpenLayersMap],
       plugins: [AnnotationsVisualizer],
