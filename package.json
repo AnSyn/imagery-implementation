@@ -6,14 +6,15 @@
     "unlink": "npm unlink @ansyn/imagery @ansyn/ol",
     "postinstall": "npm run link",
     "predeploy": "npm run build:prod -- --base-href=https://ansyn.github.io/imagery-implementation/ --deploy-url=https://ansyn.github.io/imagery-implementation/",
-    "deploy": "gh-pages -d dist/imagery-implementation",
+    "deploy": "gh-pages --repo https://$GITHUB_TOKEN@github.com/AnSyn/imagery-implementation.git -d dist/imagery-implementation",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "test:single-run": "ng test imagery-implementation --watch=false"
   },
   "private": true,
   "dependencies": {
