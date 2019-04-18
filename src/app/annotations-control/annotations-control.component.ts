@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import IMAGERY_SETTINGS from '../IMAGERY_SETTINGS';
 import { ImageryCommunicatorService } from '@ansyn/imagery';
 import { ANNOTATION_MODE_LIST, AnnotationsVisualizer } from '@ansyn/ol';
-import { filter, take, tap } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
+import { mergeMap, filter, take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-annotations-control',
@@ -12,6 +13,16 @@ import { filter, take, tap } from 'rxjs/operators';
 export class AnnotationsControlComponent implements OnInit {
   ANNOTATION_MODE_LIST = ANNOTATION_MODE_LIST;
   annotations: AnnotationsVisualizer;
+  reader = new FileReader();
+
+  onFileLoad$ = fromEvent(this.reader, 'load').pipe(
+    mergeMap(() => {
+      const readerResult: string = <string>this.reader.result;
+      const geoJSON = JSON.parse(readerResult);
+      const entities = this.annotations.annotationsLayerToEntities(geoJSON);
+      return this.annotations.addOrUpdateEntities(entities);
+    })
+  );
 
   constructor(protected communicators: ImageryCommunicatorService) {
   }
@@ -28,8 +39,7 @@ export class AnnotationsControlComponent implements OnInit {
       take(1)
     ).subscribe();
 
-    setTimeout(() => {
-    }, 2000);
+    this.onFileLoad$.subscribe();
   }
 
   draw(mode) {
@@ -43,7 +53,15 @@ export class AnnotationsControlComponent implements OnInit {
   changeFill(color) {
     this.annotations.updateStyle({ initial: { fill: color } });
   }
+
   changeStroke(color) {
     this.annotations.updateStyle({ initial: { stroke: color } });
+  }
+
+  loadJSON(files: FileList) {
+    const file = files.item(0);
+    if (file) {
+      this.reader.readAsText(file, 'UTF-8');
+    }
   }
 }

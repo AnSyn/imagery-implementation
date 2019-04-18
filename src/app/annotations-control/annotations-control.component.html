@@ -15,12 +15,19 @@
 
   <button mat-button>
     FILL
-    <mcc-color-picker [selectedColor]="annotations?.visualizerStyle?.initial?.fill || '#ffffff'" (selected)="changeFill($event)"></mcc-color-picker>
+    <mcc-color-picker [selectedColor]="annotations?.visualizerStyle?.initial?.fill || '#ffffff'"
+                      (selected)="changeFill($event)"></mcc-color-picker>
   </button>
 
   <button mat-button>
     STROKE
-    <mcc-color-picker [selectedColor]="annotations?.visualizerStyle?.initial?.stroke || '#ffffff'" (selected)="changeStroke($event)"></mcc-color-picker>
+    <mcc-color-picker [selectedColor]="annotations?.visualizerStyle?.initial?.stroke || '#ffffff'"
+                      (selected)="changeStroke($event)"></mcc-color-picker>
   </button>
+
+  <button mat-button>
+    <input type="file" (change)="loadJSON($event.target.files)" />
+  </button>
+
 
 </div>
