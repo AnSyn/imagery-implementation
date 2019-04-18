@@ -3,16 +3,10 @@
 
   <div class="imagery">
     <div>
-      <app-controller [settings]="imagerySettings"></app-controller>
-      <ansyn-imagery-view [mapComponentSettings]="imagerySettings"></ansyn-imagery-view>
+      <ansyn-imagery-view [settings]="settings"></ansyn-imagery-view>
     </div>
-
-    <div>
-      <app-controller [settings]="imagery2Settings"></app-controller>
-      <ansyn-imagery-view [mapComponentSettings]="imagery2Settings"></ansyn-imagery-view>
-    </div>
-
-
   </div>
+
+  <app-annotations-control></app-annotations-control>
 
 </div>

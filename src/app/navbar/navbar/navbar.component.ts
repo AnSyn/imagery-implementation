@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +7,9 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  get environment() {
-    return environment;
+
+  get LINK_TO_GITHUB() {
+    return environment.githubLink;
   }
 
   constructor() {

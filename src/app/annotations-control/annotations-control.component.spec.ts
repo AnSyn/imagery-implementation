@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ControllerComponent } from './controller.component';
+import { AnnotationsControlComponent } from './annotations-control.component';
 
-describe('ControllerComponent', () => {
-  let component: ControllerComponent;
-  let fixture: ComponentFixture<ControllerComponent>;
+describe('AnnotationsControlComponent', () => {
+  let component: AnnotationsControlComponent;
+  let fixture: ComponentFixture<AnnotationsControlComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ControllerComponent ]
+      declarations: [ AnnotationsControlComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ControllerComponent);
+    fixture = TestBed.createComponent(AnnotationsControlComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
