@@ -1,85 +1,13 @@
 import { Component } from '@angular/core';
-import { CaseMapState } from '@ansyn/core';
+import { IMapSettings, ImageryCommunicatorService } from '@ansyn/imagery';
+import IMAGERY_SETTINGS from './IMAGERY_SETTINGS';
+import { AnnotationsVisualizer } from '@ansyn/ol';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  imagerySettings: CaseMapState = {
-    id: 'id',
-    sourceType: 'OSM',
-    mapType: 'OlImap',
-    flags: {},
-    data: {
-      position: {
-        extentPolygon: {
-          type: 'Polygon',
-          coordinates: [
-            [
-              [
-                -180,
-                -90
-              ],
-              [
-                -180,
-                90
-              ],
-              [
-                180,
-                90
-              ],
-              [
-                180,
-                -90
-              ],
-              [
-                -180,
-                -90
-              ]
-            ]
-          ]
-        }
-      }
-    }
-  };
-
-  imagery2Settings: CaseMapState = {
-    id: 'id2',
-    sourceType: 'OSM',
-    mapType: 'cesiumMap',
-    flags: {},
-    data: {
-      position: {
-        extentPolygon: {
-          type: 'Polygon',
-          coordinates: [
-            [
-              [
-                -180,
-                -90
-              ],
-              [
-                -180,
-                90
-              ],
-              [
-                180,
-                90
-              ],
-              [
-                180,
-                -90
-              ],
-              [
-                -180,
-                -90
-              ]
-            ]
-          ]
-        }
-      }
-    }
-  };
+  public settings: IMapSettings = IMAGERY_SETTINGS;
 }

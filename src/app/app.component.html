@@ -3,16 +3,10 @@
 
   <div class="imagery">
     <div>
-      <div>Openlayers</div>
-      <ansyn-imagery-view [mapComponentSettings]="imagerySettings"></ansyn-imagery-view>
+      <ansyn-imagery-view [settings]="settings"></ansyn-imagery-view>
     </div>
-
-    <div>
-      <div>Cesium</div>
-      <ansyn-imagery-view [mapComponentSettings]="imagery2Settings"></ansyn-imagery-view>
-    </div>
-
-
   </div>
+
+  <app-annotations-control></app-annotations-control>
 
 </div>

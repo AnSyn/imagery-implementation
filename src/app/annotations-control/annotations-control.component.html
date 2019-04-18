@@ -1,0 +1,16 @@
+<div class="list">
+  <button
+    *ngFor="let mode of ANNOTATION_MODE_LIST"
+    mat-button
+    [disabled]="!annotations"
+    color="primary"
+    [class.mat-accent]="annotations?.mode === mode"
+    (click)="draw(mode)">
+    {{ mode }}
+  </button>
+
+  <button mat-icon-button (click)="clear()">
+    <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+  </button>
+
+</div>
