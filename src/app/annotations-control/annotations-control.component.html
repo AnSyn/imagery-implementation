@@ -15,13 +15,13 @@
 
   <button mat-button>
     FILL
-    <mcc-color-picker [selectedColor]="annotations?.visualizerStyle?.initial?.fill || '#ffffff'"
+    <mcc-color-picker [selectedColor]="'#ffffff'"
                       (selected)="changeFill($event)"></mcc-color-picker>
   </button>
 
   <button mat-button>
     STROKE
-    <mcc-color-picker [selectedColor]="annotations?.visualizerStyle?.initial?.stroke || '#ffffff'"
+    <mcc-color-picker [selectedColor]="'#ffffff'"
                       (selected)="changeStroke($event)"></mcc-color-picker>
   </button>
 
