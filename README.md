@@ -12,7 +12,7 @@
    yarn add @ansyn/imagery @ansyn/ol @angular/matrials @angular/cdk @types/geojson
   ```
 ## Basic Usage
-### Show map
+### Show OpenLayers map with Bing provider
 #### Step-1
 Open `app.module.ts` file and change it content to:
   ```typescript
