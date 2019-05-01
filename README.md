@@ -143,7 +143,7 @@ open `app.component.html` file and change it content to:
 #### Step-4
 The `Imagery` component must have a height
 give it a style inside `app.component.css`
-```less
+```css
 div.app {
   display: flex;
   position: relative;
@@ -157,7 +157,7 @@ div.app {
   box-sizing: border-box;
   padding: 50px 0;
 }
-.imagery div {
+.imagery * {
   position: relative;
   flex: 1;
   text-align: center;
@@ -474,7 +474,7 @@ Open `app.component.html` and change it content to:
 +  <app-annotations-control></app-annotations-control>
 </div>
 ```
-Open `stle.css` and change it content to:
+Open `style.css` and change it content to:
 ```css
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
