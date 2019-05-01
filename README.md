@@ -561,7 +561,7 @@ Open `app.component.html` and change it content to:
   <div class="imagery">
     <div>
       <ansyn-imagery-view [settings]="settings"></ansyn-imagery-view>
- +     <ansyn-annotations-context-menu [mapState]="settings"></ansyn-annotations-context-menu>
++     <ansyn-annotations-context-menu [mapState]="settings"></ansyn-annotations-context-menu>
     </div>
   </div>
   <app-annotations-control></app-annotations-control>
