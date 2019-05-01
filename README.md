@@ -19,13 +19,8 @@ Open `app.module.ts` file and change it content to:
 import { NgModule } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ImageryModule, MAP_PROVIDERS_CONFIG, MAP_SOURCE_PROVIDERS_CONFIG} from '@ansyn/imagery';
-import {
-  OL_CONFIG,
-  OpenLayerBingSourceProvider,
-  OpenLayersMap
-} from '@ansyn/ol';
+import { OL_CONFIG, OpenLayerBingSourceProvider, OpenLayersMap } from '@ansyn/ol';
 import {AppComponent} from './app.component';
-
 
 @NgModule({
   declarations: [
@@ -56,7 +51,7 @@ import {AppComponent} from './app.component';
       provide: MAP_SOURCE_PROVIDERS_CONFIG,
       useValue: {
         'BING': {
-          key: 'AsVccaM44P5n-GYKXaV0oVGdTI665Qx_sMgYBSYRxryH2pLe92iVxUgEtwIt8des',
+          key: '<YOUR-KEYS>',
           styles: ['AerialWithLabels']
         }
       }
@@ -171,24 +166,17 @@ div.app {
 you may also give him specific `height`
 
 ### Draw annotations on the map
-####Step-1
+#### Step-1
 ##### Import necessary modules
 open `app.module.ts` and change it content to:
+
 ```diff
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatIconModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ImageryModule, MAP_PROVIDERS_CONFIG, MAP_SOURCE_PROVIDERS_CONFIG} from '@ansyn/imagery';
-import {
-  AnnotationsVisualizer,
-  OL_CONFIG, OL_PLUGINS_CONFIG,
-  OpenLayerBingSourceProvider,
-  OpenLayersMap
-} from '@ansyn/ol';
-import {MccColorPickerModule} from 'material-community-components';
+-import { OL_CONFIG, OpenLayerBingSourceProvider, OpenLayersMap } from '@ansyn/ol';
++import { OL_CONFIG, OpenLayerBingSourceProvider, OpenLayersMap, OL_PLUGINS_CONFIG, AnnotationsVisualizer } from '@ansyn/ol';
 import {AppComponent} from './app.component';
-
 
 @NgModule({
   declarations: [
@@ -196,25 +184,20 @@ import {AppComponent} from './app.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule,
-    MccColorPickerModule.forRoot({
-      used_colors: ['#000000', '#123456', '#777666']
-    }),
     ImageryModule.provide({
       maps: [OpenLayersMap],
+-      plugins: [],
 +      plugins: [AnnotationsVisualizer],
       mapSourceProviders: [OpenLayerBingSourceProvider]
-    }),
+    })
   ],
   providers: [
-    {
-      provide: OL_PLUGINS_CONFIG,
-      useValue: {
-        Annotations: {}
-      }
-    },
++    {
++      provide: OL_PLUGINS_CONFIG,
++      useValue: {
++        Annotations: {}
++      }
++    },
     {
       provide: OL_CONFIG,
       useValue: {}
@@ -231,7 +214,7 @@ import {AppComponent} from './app.component';
       provide: MAP_SOURCE_PROVIDERS_CONFIG,
       useValue: {
         'BING': {
-          key: 'AsVccaM44P5n-GYKXaV0oVGdTI665Qx_sMgYBSYRxryH2pLe92iVxUgEtwIt8des',
+          key: '<YOUR-KEYS>',
           styles: ['AerialWithLabels']
         }
       }
@@ -241,8 +224,6 @@ import {AppComponent} from './app.component';
 })
 export class AppModule {
 }
-
-
 ```
 >this will be able you to do the following in `app.component.ts'
 >```typescript
@@ -292,21 +273,16 @@ install material-community-components for a color picker
   npm install material-community-components
 ```
 open `app.module.ts` and change it content to: 
-```typescript
+```diff
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatIconModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {ImageryModule, MAP_PROVIDERS_CONFIG, MAP_SOURCE_PROVIDERS_CONFIG} from '@ansyn/imagery';
-import {
-  AnnotationsVisualizer,
-  OL_CONFIG, OL_PLUGINS_CONFIG,
-  OpenLayerBingSourceProvider,
-  OpenLayersMap
-} from '@ansyn/ol';
-import {MccColorPickerModule} from 'material-community-components';
-import {AnnotationsControlComponent} from './annotations-control/annotations-control.component';
+import { OL_CONFIG, OpenLayerBingSourceProvider, OpenLayersMap, OL_PLUGINS_CONFIG, AnnotationsVisualizer } from '@ansyn/ol';
 import {AppComponent} from './app.component';
-
+import {AnnotationsControlComponent} from './annotations-control/annotations-control.component';
++import {MccColorPickerModule} from 'material-community-components';
++import {MatButtonModule, MatIconModule} from '@angular/material';
++import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -315,16 +291,17 @@ import {AppComponent} from './app.component';
   ],
   imports: [
     BrowserModule,
-    MatIconModule,
-    MatButtonModule,
-    MccColorPickerModule.forRoot({
-      used_colors: ['#000000', '#123456', '#777666']
-    }),
++    BrowserAnimationsModule,
++    MatButtonModule,
++    MatIconModule,
++    MccColorPickerModule.forRoot({
++      used_colors: ['#000000', '#123456', '#777666']
++    }),
     ImageryModule.provide({
       maps: [OpenLayersMap],
       plugins: [AnnotationsVisualizer],
       mapSourceProviders: [OpenLayerBingSourceProvider]
-    }),
+    })
   ],
   providers: [
     {
@@ -349,7 +326,7 @@ import {AppComponent} from './app.component';
       provide: MAP_SOURCE_PROVIDERS_CONFIG,
       useValue: {
         'BING': {
-          key: 'AsVccaM44P5n-GYKXaV0oVGdTI665Qx_sMgYBSYRxryH2pLe92iVxUgEtwIt8des',
+          key: '<YOUR-KEYS>',
           styles: ['AerialWithLabels']
         }
       }
@@ -359,7 +336,6 @@ import {AppComponent} from './app.component';
 })
 export class AppModule {
 }
-
 ```
 
 open `annotations-control.components.html` amd change it content to:
@@ -487,7 +463,7 @@ Open `annotations-control.component.css` and change it content to:
 ###Step-3
 #####Add our Annotation Control to our app
 Open `app.component.html` and change it content to:
-```html
+```diff
 <div class="app">
   <div class="imagery">
     <div>
@@ -495,7 +471,7 @@ Open `app.component.html` and change it content to:
     </div>
   </div>
 
-  <app-annotations-control></app-annotations-control>
++  <app-annotations-control></app-annotations-control>
 </div>
 ```
 Open `stle.css` and change it content to:
@@ -512,85 +488,80 @@ body {
 you may want to edit an annotation it been draw
 ####Step-1
 Open `app.module.ts` and change it content to:
-```typescript
-  import { NgModule } from '@angular/core';
-  import {MatButtonModule, MatIconModule} from '@angular/material';
-  import {BrowserModule} from '@angular/platform-browser';
-  import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-  import {ImageryModule, MAP_PROVIDERS_CONFIG, MAP_SOURCE_PROVIDERS_CONFIG} from '@ansyn/imagery';
-  import {
-    AnnotationsContextMenuModule,
-    AnnotationsVisualizer,
-    OL_CONFIG, OL_PLUGINS_CONFIG,
-    OpenLayerBingSourceProvider,
-    OpenLayersMap
-  } from '@ansyn/ol';
-  import {MccColorPickerModule} from 'material-community-components';
-  import {AppComponent} from './app.component';
-  
-  
-  @NgModule({
-    declarations: [
-      AppComponent,
-    ],
-    imports: [
-      BrowserModule,
-      BrowserAnimationsModule,
-      MatButtonModule,
-      MatIconModule,
-      AnnotationsContextMenuModule,
-      MccColorPickerModule.forRoot({
-        used_colors: ['#000000', '#123456', '#777666']
-      }),
-      ImageryModule.provide({
-        maps: [OpenLayersMap],
-        plugins: [AnnotationsVisualizer],
-        mapSourceProviders: [OpenLayerBingSourceProvider]
-      }),
-    ],
-    providers: [
-      {
-        provide: OL_PLUGINS_CONFIG,
-        useValue: {
-          Annotations: {}
-        }
-      },
-      {
-        provide: OL_CONFIG,
-        useValue: {}
-      },
-      {
-        provide: MAP_PROVIDERS_CONFIG,
-        useValue: {
-          openLayersMap: {
-            defaultMapSource: 'BING'
-          }
-        }
-      },
-      {
-        provide: MAP_SOURCE_PROVIDERS_CONFIG,
-        useValue: {
-          'BING': {
-            key: 'AsVccaM44P5n-GYKXaV0oVGdTI665Qx_sMgYBSYRxryH2pLe92iVxUgEtwIt8des',
-            styles: ['AerialWithLabels']
-          }
+```diff
+import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {ImageryModule, MAP_PROVIDERS_CONFIG, MAP_SOURCE_PROVIDERS_CONFIG} from '@ansyn/imagery';
+-import { OL_CONFIG, OpenLayerBingSourceProvider, OpenLayersMap, OL_PLUGINS_CONFIG, AnnotationsVisualizer } from '@ansyn/ol';
++import { OL_CONFIG, OpenLayerBingSourceProvider, OpenLayersMap, OL_PLUGINS_CONFIG, AnnotationsVisualizer, AnnotationsContextMenuModule } from '@ansyn/ol';
+import {AppComponent} from './app.component';
+import {AnnotationsControlComponent} from './annotations-control/annotations-control.component';
+import {MccColorPickerModule} from 'material-community-components';
+import {MatButtonModule, MatIconModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    AnnotationsControlComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MccColorPickerModule.forRoot({
+      used_colors: ['#000000', '#123456', '#777666']
+    }),
+    ImageryModule.provide({
+      maps: [OpenLayersMap],
+      plugins: [AnnotationsVisualizer],
+      mapSourceProviders: [OpenLayerBingSourceProvider]
+-    })
++    }),
++    AnnotationsContextMenuModule
+  ],
+  providers: [
+    {
+      provide: OL_PLUGINS_CONFIG,
+      useValue: {
+        Annotations: {}
+      }
+    },
+    {
+      provide: OL_CONFIG,
+      useValue: {}
+    },
+    {
+      provide: MAP_PROVIDERS_CONFIG,
+      useValue: {
+        openLayersMap: {
+          defaultMapSource: 'BING'
         }
       }
-    ],
-    bootstrap: [AppComponent]
-  })
-  export class AppModule {
-  }
-  
-
-``` 
+    },
+    {
+      provide: MAP_SOURCE_PROVIDERS_CONFIG,
+      useValue: {
+        'BING': {
+          key: '<YOUR-KEYS>',
+          styles: ['AerialWithLabels']
+        }
+      }
+    }
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
 Open `app.component.html` and change it content to: 
-```html
+```diff
 <div class="app">
   <div class="imagery">
     <div>
       <ansyn-imagery-view [settings]="settings"></ansyn-imagery-view>
-      <ansyn-annotations-context-menu [mapState]="settings"></ansyn-annotations-context-menu>
+ +     <ansyn-annotations-context-menu [mapState]="settings"></ansyn-annotations-context-menu>
     </div>
   </div>
   <app-annotations-control></app-annotations-control>
