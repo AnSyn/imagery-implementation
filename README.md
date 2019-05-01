@@ -333,3 +333,51 @@ body {
 }
 
 ```
+
+## Add Annotations edit menu
+
+edit `app.component.html` : 
+```html
+<div class="app">
+  <div class="imagery">
+    <div>
+      <ansyn-imagery-view [settings]="settings"></ansyn-imagery-view>
+      <ansyn-annotations-context-menu [mapState]="settings"></ansyn-annotations-context-menu>
+    </div>
+  </div>
+  <app-annotations-control></app-annotations-control>
+</div>
+```
+
+edit `app.component.css` 
+```css
+div.app {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+.imagery {
+  display: flex;
+  flex: 1;
+  box-sizing: border-box;
+  padding: 50px 0;
+}
+.imagery div {
+  position: relative;
+  flex: 1;
+  text-align: center;
+}
+```
+
+import `AnnotationsContextMenuModule` in `app.module.ts`
+```typescript
+  import { AnnotationsContextMenuModule, AnnotationsVisualizer, OL_CONFIG, OL_PLUGINS_CONFIG, OpenLayerBingSourceProvider, OpenLayersMap } from '@ansyn/ol';
+  @ngModule({
+    impports:[
+      ...
+      AnnotationsContextMenuModule
+    ]
+  })
+``` 
