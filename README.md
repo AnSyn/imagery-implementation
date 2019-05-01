@@ -174,7 +174,7 @@ you may also give him specific `height`
 ####Step-1
 ##### Import necessary modules
 open `app.module.ts` and change it content to:
-```typescript
+```diff
 import { NgModule } from '@angular/core';
 import {MatButtonModule, MatIconModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
@@ -204,7 +204,7 @@ import {AppComponent} from './app.component';
     }),
     ImageryModule.provide({
       maps: [OpenLayersMap],
-      plugins: [AnnotationsVisualizer],
++      plugins: [AnnotationsVisualizer],
       mapSourceProviders: [OpenLayerBingSourceProvider]
     }),
   ],
