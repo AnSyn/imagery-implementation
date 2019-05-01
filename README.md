@@ -1,9 +1,9 @@
 # Imagery Implementation
-  this repo show you how to use `@ansyn/imagery` `@ansyn/ol` packages to
+  This repo show you how to use `@ansyn/imagery` `@ansyn/ol` packages to
   create a fast map web app of your own.
   
 ## Installation
-  inside your angular project run
+  Inside your angular project run
   ``` bash
     npm install @ansyn/imagery @ansyn/ol @angular/matrials @angular/cdk @types/geojson 
   ```
@@ -13,7 +13,7 @@
   ```
 ## Basic Usage
 ### Show map
-####Step-1
+#### Step-1
 Open `app.module.ts` file and change it content to:
   ```typescript
 import { NgModule } from '@angular/core';
@@ -62,9 +62,9 @@ import {AppComponent} from './app.component';
 export class AppModule {
 }
 ```
-this will tell our app to use OpenLayers map with our Imagery component
+This will tell our app to use OpenLayers map with our Imagery component
 <!-- @TODO: add link for the wiki for more details -->
-####Step-2
+#### Step-2
 Create a sample setting file `IMAGERRY_SETTING.ts` inside your root file
 <!-- @TODO: add link for the wiki for more details -->
 ```typescript
@@ -129,7 +129,7 @@ export class AppComponent {
   public settings: IMapSettings = IMAGERY_SETTINGS;
 }
 ```
-####Step-3
+#### Step-3
 open `app.component.html` file and change it content to:
 ```html
 <div class="app">
@@ -140,9 +140,9 @@ open `app.component.html` file and change it content to:
   </div>
 </div>
 ```
-####Step-4
+#### Step-4
 The `Imagery` component must have a height
-give him a style inside `app.component.css`
+give it a style inside `app.component.css`
 ```less
 div.app {
   display: flex;
@@ -168,7 +168,7 @@ you may also give him specific `height`
 ### Draw annotations on the map
 #### Step-1
 ##### Import necessary modules
-open `app.module.ts` and change it content to:
+Open `app.module.ts` and change it content to:
 
 ```diff
 import { NgModule } from '@angular/core';
@@ -262,8 +262,8 @@ export class AppModule {
 >```
 >which give you the ability to draw one annotation of type polygon when the map load
 >but we want to draw more than one annotation and be able to chose the type of the annotation.
-####Step-2
-##### create an Annotation control
+#### Step-2
+##### Create an Annotation control
 create a component named annotations-control
 ```bash
   ng g c annotaions-control
@@ -460,8 +460,8 @@ Open `annotations-control.component.css` and change it content to:
 }
 ```
 
-###Step-3
-#####Add our Annotation Control to our app
+### Step-3
+##### Add our Annotation Control to our app
 Open `app.component.html` and change it content to:
 ```diff
 <div class="app">
@@ -486,7 +486,7 @@ body {
 
 ## Add Annotations edit menu
 you may want to edit an annotation it been draw
-####Step-1
+#### Step-1
 Open `app.module.ts` and change it content to:
 ```diff
 import { NgModule } from '@angular/core';
