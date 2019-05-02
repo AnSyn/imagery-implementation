@@ -5,11 +5,11 @@
 ## Installation
   Inside your angular project run
   ``` bash
-    npm install @ansyn/imagery @ansyn/ol @angular/matrials @angular/cdk @types/geojson 
+    npm install @ansyn/imagery @ansyn/ol @angular/material @angular/cdk @types/geojson 
   ```
   or
   ```bash
-   yarn add @ansyn/imagery @ansyn/ol @angular/matrials @angular/cdk @types/geojson
+   yarn add @ansyn/imagery @ansyn/ol @angular/material @angular/cdk @types/geojson
   ```
 ## Basic Usage
 ### Show OpenLayers map with Bing provider
