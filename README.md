@@ -62,8 +62,8 @@ import {AppComponent} from './app.component';
 export class AppModule {
 }
 ```
-This will tell our app to use OpenLayers map with our Imagery component
-for more information about `ImageryModule` metadata [click here](https://github.com/AnSyn/ansyn/wiki/Imagery-Lets-Go-Deeper)
+This will tell our app to use OpenLayers map with our Imagery component. <br>
+for more information about `ImageryModule` metadata [click here](https://github.com/AnSyn/ansyn/wiki/Imagery-Lets-Go-Deeper) <br>
 for more information about `providers` [click here](https://github.com/AnSyn/ansyn/wiki/Providers)
 #### Step-2
 Create a sample setting file `IMAGERRY_SETTING.ts` inside your root file
@@ -113,7 +113,7 @@ const IMAGERY_SETTINGS: IMapSettings = {
 
 export default IMAGERY_SETTINGS;
 ```
-and import it in your `app.component.ts`
+and import it in your `app.component.ts`<br>
 for more information about the settings object [click here](https://github.com/AnSyn/ansyn/wiki/Setting)
 ```typescript
 import { Component } from '@angular/core';
