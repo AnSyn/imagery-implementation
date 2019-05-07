@@ -11,6 +11,8 @@
   ```bash
    yarn add @ansyn/imagery @ansyn/ol @angular/material @angular/cdk @types/geojson
   ```
+  
+  [see more information about the Imagery module](https://github.com/AnSyn/ansyn/wiki/Imagery-Package)
 ## Basic Usage
 ### Show OpenLayers map with Bing provider
 #### Step-1
