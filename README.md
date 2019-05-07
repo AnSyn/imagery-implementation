@@ -143,7 +143,7 @@ open `app.component.html` file and change it content to:
 ```
 #### Step-4
 The `Imagery` component must have a height
-give it a style inside `app.component.css`
+give it a style inside `app.component.less`
 ```less
 div.app {
   display: flex;
@@ -177,8 +177,8 @@ div.app {
 you may also give him specific `height`
 
 #### Step 5
-add ol and material style to our global `style.css`
-```css
+add ol and material style to our global `style.less`
+```less
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~ol/ol.css";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
@@ -259,7 +259,7 @@ export class AppModule {
 >@Component({
 >  selector: 'app-root',
 >  templateUrl: './app.component.html',
->  styleUrls: ['./app.component.css']
+>  styleUrls: ['./app.component.less']
 >})
 >export class AppComponent implements AfterViewInit {
 >  public settings: IMapSettings = IMAGERY_SETTINGS;
@@ -467,8 +467,8 @@ export class AnnotationsControlComponent implements OnInit {
 }
 ```
 
-Open `annotations-control.component.css` and change it content to:
-```css
+Open `annotations-control.component.less` and change it content to:
+```less
 :host {
   width: 100%;
   display: flex;
