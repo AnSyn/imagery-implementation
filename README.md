@@ -143,28 +143,50 @@ open `app.component.html` file and change it content to:
 ```
 #### Step-4
 The `Imagery` component must have a height
-give it a style inside `app.component.css`
-```css
+give it a style inside `app.component.less`
+```less
 div.app {
   display: flex;
   position: relative;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-}
+  
 .imagery {
   display: flex;
   flex: 1;
   box-sizing: border-box;
   padding: 50px 0;
 }
-.imagery * {
-  position: relative;
-  flex: 1;
-  text-align: center;
+
+/deep/ .ol-scale-line-inner {
+    margin-top: 16px;
+    min-width: 144px;
+  }
+
+  /deep/ .ol-mouse-position {
+    bottom: 5px;
+    top: auto;
+    right: auto;
+    padding-left: 13px;
+    padding-bottom: 18px;
+    color: #cccccc;
+  }
 }
 ```
 you may also give him specific `height`
+
+#### Step 5
+add ol and material style to our global `style.less`
+```less
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~ol/ol.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+body {
+  margin: 0;
+}
+```
 
 ### Draw annotations on the map
 #### Step-1
@@ -237,7 +259,7 @@ export class AppModule {
 >@Component({
 >  selector: 'app-root',
 >  templateUrl: './app.component.html',
->  styleUrls: ['./app.component.css']
+>  styleUrls: ['./app.component.less']
 >})
 >export class AppComponent implements AfterViewInit {
 >  public settings: IMapSettings = IMAGERY_SETTINGS;
@@ -445,8 +467,8 @@ export class AnnotationsControlComponent implements OnInit {
 }
 ```
 
-Open `annotations-control.component.css` and change it content to:
-```css
+Open `annotations-control.component.less` and change it content to:
+```less
 :host {
   width: 100%;
   display: flex;
@@ -474,15 +496,6 @@ Open `app.component.html` and change it content to:
 
 +  <app-annotations-control></app-annotations-control>
 </div>
-```
-Open `style.css` and change it content to:
-```css
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
-body {
-  margin: 0;
-}
 ```
 you can read how to create your own plugin [here](https://github.com/AnSyn/ansyn/wiki/Create-new-plugins)
 
