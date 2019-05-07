@@ -483,6 +483,7 @@ body {
   margin: 0;
 }
 ```
+you can read how to create your own plugin [here](https://github.com/AnSyn/ansyn/wiki/Create-new-plugins)
 
 ## Add Annotations edit menu
 you may want to edit an annotation it been draw
