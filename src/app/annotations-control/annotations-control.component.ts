@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ImageryCommunicatorService} from '@ansyn/imagery';
+import {ANNOTATION_MODE_LIST, AnnotationsVisualizer} from '@ansyn/ol';
+import {fromEvent} from 'rxjs';
+import {filter, mergeMap, take, tap} from 'rxjs/operators';
 import IMAGERY_SETTINGS from '../IMAGERY_SETTINGS';
-import { ImageryCommunicatorService } from '@ansyn/imagery';
-import { ANNOTATION_MODE_LIST, AnnotationsVisualizer } from '@ansyn/ol';
-import { fromEvent } from 'rxjs';
-import { mergeMap, filter, take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-annotations-control',
@@ -23,6 +23,7 @@ export class AnnotationsControlComponent implements OnInit {
       return this.annotations.addOrUpdateEntities(entities);
     })
   );
+  showCenterIcon: boolean;
 
   constructor(protected communicators: ImageryCommunicatorService) {
   }
@@ -30,11 +31,12 @@ export class AnnotationsControlComponent implements OnInit {
   onInitMap() {
     const communicator = this.communicators.provide(IMAGERY_SETTINGS.id);
     this.annotations = communicator.getPlugin(AnnotationsVisualizer);
+    this.showCenterIcon = this.annotations.isShowAnnotationCenter();
   }
 
   ngOnInit() {
     this.communicators.instanceCreated.pipe(
-      filter(({ id }) => id === IMAGERY_SETTINGS.id),
+      filter(({id}) => id === IMAGERY_SETTINGS.id),
       tap(this.onInitMap.bind(this)),
       take(1)
     ).subscribe();
@@ -51,11 +53,11 @@ export class AnnotationsControlComponent implements OnInit {
   }
 
   changeFill(color) {
-    this.annotations.updateStyle({ initial: { fill: color } });
+    this.annotations.updateStyle({initial: {fill: color}});
   }
 
   changeStroke(color) {
-    this.annotations.updateStyle({ initial: { stroke: color } });
+    this.annotations.updateStyle({initial: {stroke: color}});
   }
 
   loadJSON(files: FileList) {
@@ -63,5 +65,10 @@ export class AnnotationsControlComponent implements OnInit {
     if (file) {
       this.reader.readAsText(file, 'UTF-8');
     }
+  }
+
+  setCenterIcon() {
+    this.showCenterIcon = !this.showCenterIcon;
+    this.annotations.toggleAnnotaionCenerIndication(this.showCenterIcon);
   }
 }
