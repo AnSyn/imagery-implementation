@@ -501,8 +501,8 @@ Open `app.component.html` and change it content to:
 ```
 you can read how to create your own plugin [here](https://github.com/AnSyn/ansyn/wiki/Create-new-plugins)
 
-## Add Icon to annotation center
-The annotation plugin can draw a icon on the center of the annotation
+## Draw icon at annotation center
+The annotation plugin can draw an icon on the center of the annotation
 #### Step-1
 copy your icon inside the assets directory.
 #### Step-2
