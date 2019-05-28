@@ -23,7 +23,6 @@ export class AnnotationsControlComponent implements OnInit {
       return this.annotations.addOrUpdateEntities(entities);
     })
   );
-  showCenterIcon: boolean;
 
   constructor(protected communicators: ImageryCommunicatorService) {
   }
@@ -31,7 +30,6 @@ export class AnnotationsControlComponent implements OnInit {
   onInitMap() {
     const communicator = this.communicators.provide(IMAGERY_SETTINGS.id);
     this.annotations = communicator.getPlugin(AnnotationsVisualizer);
-    this.showCenterIcon = this.annotations.isShowAnnotationCenter();
   }
 
   ngOnInit() {
@@ -67,8 +65,13 @@ export class AnnotationsControlComponent implements OnInit {
     }
   }
 
-  setCenterIcon() {
-    this.showCenterIcon = !this.showCenterIcon;
-    this.annotations.toggleAnnotaionCenerIndication(this.showCenterIcon);
+  drawAnnotationWithIcon({value}) {
+    let iconSrc;
+    if (value === 'None') {
+      iconSrc = '';
+    } else {
+      iconSrc = `assets/${value}.svg`
+    }
+    this.annotations.setIconSrc(iconSrc);
   }
 }
