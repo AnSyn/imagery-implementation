@@ -5,7 +5,7 @@ import { ImageryModule, MAP_PROVIDERS_CONFIG, MAP_SOURCE_PROVIDERS_CONFIG } from
 import { AnnotationsVisualizer, OL_CONFIG, OL_PLUGINS_CONFIG, OpenLayerBingSourceProvider, OpenLayersMap, AnnotationsContextMenuModule } from '@ansyn/ol';
 import { NavbarModule } from './navbar/navbar.module';
 import { AnnotationsControlComponent } from './annotations-control/annotations-control.component';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatButtonToggleModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MccColorPickerModule } from 'material-community-components';
 
@@ -18,6 +18,7 @@ import { MccColorPickerModule } from 'material-community-components';
     BrowserModule,
     BrowserAnimationsModule,
     NavbarModule,
+    MatButtonToggleModule,
     MatButtonModule,
     MatIconModule,
     MccColorPickerModule.forRoot({

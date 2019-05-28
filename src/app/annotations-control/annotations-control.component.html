@@ -1,14 +1,13 @@
 <div class="list">
 
   <span>
-    <button mat-button
-            (click)="drawAnnotationWithIcon('center-icon')">
-      Annotation with <img src="assets/center-icon.svg" class="center-icon"/>
-    </button>
-    <button mat-button
-            (click)="drawAnnotationWithIcon('forkme')">
-      Annotation with <img src="assets/forkme.svg" class="center-icon gray"/>
-    </button>
+    <p>Annotations icon:</p>
+    <mat-button-toggle-group (change)="drawAnnotationWithIcon($event)">
+    <mat-button-toggle value="None">None</mat-button-toggle>
+    <mat-button-toggle value="logo"><img src="assets/center-icon.svg" class="center-icon"/></mat-button-toggle>
+    <mat-button-toggle value="forkme"><img src="assets/forkme.svg" class="center-icon gray"/></mat-button-toggle>
+  </mat-button-toggle-group>
+
   </span>
 
   <button
