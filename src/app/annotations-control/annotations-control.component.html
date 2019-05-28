@@ -1,11 +1,16 @@
 <div class="list">
 
-<label>
-    show center icon
-      <input type="checkbox"
-         checked="showCenterIcon"
-        (change)="setCenterIcon()">
-</label>
+  <span>
+    <button mat-button
+            (click)="drawAnnotationWithIcon('center-icon')">
+      Annotation with <img src="assets/center-icon.svg" class="center-icon"/>
+    </button>
+    <button mat-button
+            (click)="drawAnnotationWithIcon('forkme')">
+      Annotation with <img src="assets/forkme.svg" class="center-icon gray"/>
+    </button>
+  </span>
+
   <button
     *ngFor="let mode of ANNOTATION_MODE_LIST"
     mat-button
@@ -33,7 +38,7 @@
   </button>
 
   <button mat-button>
-    <input type="file" (change)="loadJSON($event.target.files)" />
+    <input type="file" (change)="loadJSON($event.target.files)"/>
   </button>
 
 

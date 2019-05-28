@@ -34,11 +34,7 @@ import { MccColorPickerModule } from 'material-community-components';
     {
       provide: OL_PLUGINS_CONFIG,
       useValue: {
-        Annotations: {
-          icon: {
-            src: 'assets/center-icon.svg'
-          }
-        }
+        Annotations:{}
       }
     },
     {

@@ -23,7 +23,6 @@ export class AnnotationsControlComponent implements OnInit {
       return this.annotations.addOrUpdateEntities(entities);
     })
   );
-  showCenterIcon: boolean;
 
   constructor(protected communicators: ImageryCommunicatorService) {
   }
@@ -31,7 +30,6 @@ export class AnnotationsControlComponent implements OnInit {
   onInitMap() {
     const communicator = this.communicators.provide(IMAGERY_SETTINGS.id);
     this.annotations = communicator.getPlugin(AnnotationsVisualizer);
-    this.showCenterIcon = this.annotations.isShowAnnotationCenter();
   }
 
   ngOnInit() {
@@ -67,8 +65,34 @@ export class AnnotationsControlComponent implements OnInit {
     }
   }
 
-  setCenterIcon() {
-    this.showCenterIcon = !this.showCenterIcon;
-    this.annotations.toggleAnnotaionCenerIndication(this.showCenterIcon);
+  drawAnnotationWithIcon(icon: string) {
+    const iconSrc = `assets/${icon}.svg`;
+    this.communicators.communicators[IMAGERY_SETTINGS.id].getCenter().pipe(
+      mergeMap((center) => {
+        const feature = {
+          type: 'FeatureCollection',
+          features: [
+            {
+              type: 'Feature',
+              geometry: createGeometry(center),
+              properties: {
+                id: 'aaaa-aaaa-aaaa-aaaa'.replace(/a/g, () => Math.round(Math.random() * 100).toString(16)),
+                icon: iconSrc
+              }
+            }
+          ]
+        };
+        const entitie = this.annotations.annotationsLayerToEntities(<any>feature);
+        return this.annotations.addOrUpdateEntities(entitie);
+      })
+    ).subscribe();
+
+
+    function createGeometry(center) {
+      return {
+        type: 'Point',
+        coordinates: center.coordinates.map(c => Math.random() + c)
+      };
+    }
   }
 }
