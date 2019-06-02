@@ -35,7 +35,7 @@ import { MccColorPickerModule } from 'material-community-components';
     {
       provide: OL_PLUGINS_CONFIG,
       useValue: {
-        Annotations:{}
+        Annotations: {}
       }
     },
     {
