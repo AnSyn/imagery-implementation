@@ -82,6 +82,9 @@ MIT
 @ansyn/ol
 MIT
 
+@ngx-translate/core
+MIT
+
 @turf/turf
 MIT
 The MIT License (MIT)
