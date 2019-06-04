@@ -5,11 +5,11 @@
 ## Installation
   Inside your angular project run
   ``` bash
-    npm install @ansyn/imagery @ansyn/ol @angular/material @angular/cdk @types/geojson 
+    npm install @ansyn/imagery @ansyn/ol @angular/material @angular/cdk @types/geojson @ngx-translate/core@~10.0.2 
   ```
   or
   ```bash
-   yarn add @ansyn/imagery @ansyn/ol @angular/material @angular/cdk @types/geojson
+   yarn add @ansyn/imagery @ansyn/ol @angular/material @angular/cdk @types/geojson @ngx-translate/core@~10.0.2
   ```
   
   [see more information about the Imagery module](https://github.com/AnSyn/ansyn/wiki/Imagery-Package)
