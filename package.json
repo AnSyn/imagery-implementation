@@ -1,6 +1,7 @@
 {
   "name": "imagery-implementation",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "link": "npm link ../ansyn/dist/ansyn/imagery ../ansyn/dist/ansyn/ol",
     "unlink": "npm unlink --no-save @ansyn/imagery @ansyn/ol",
